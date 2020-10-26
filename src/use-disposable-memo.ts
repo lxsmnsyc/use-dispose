@@ -50,27 +50,23 @@ export default function useDisposableMemo<T>(
   const value = useLazyRef(supplier);
   const deps = useRef<DependencyList>(dependencies);
 
-  // Memoization process
-  if (shouldUpdateDeps(deps.current, dependencies)) {
+  const disposeSafe = () => {
     if (dispose) {
       dispose(value.current);
     }
+  };
+
+  // Memoization process
+  if (shouldUpdateDeps(deps.current, dependencies)) {
+    disposeSafe();
     value.current = supplier();
     deps.current = dependencies;
   }
 
   // Run dispose logic when component is cancelled.
-  useDispose(() => {
-    if (dispose) {
-      dispose(value.current);
-    }
-  });
+  useDispose(disposeSafe);
 
-  useIsomorphicEffect(() => () => {
-    if (dispose) {
-      dispose(value.current);
-    }
-  }, []);
+  useIsomorphicEffect(() => disposeSafe, []);
 
   return value.current;
 }
