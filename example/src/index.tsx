@@ -16,6 +16,8 @@ const hookMode: HookMode[] = [
   'use-memo',
 ];
 
+const { log } = console;
+
 const useHooks: CustomMemo[] = [
   // useConstant
   (tracker, container, title) => {

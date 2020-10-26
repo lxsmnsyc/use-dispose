@@ -5187,7 +5187,7 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-react-dom@^0.0.0-experimental-4ead6b530:
+react-dom@0.0.0-experimental-4ead6b530:
   version "0.0.0-experimental-4ead6b530"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-experimental-4ead6b530.tgz#6ca831f5aa7ab86f7299b9a2f7b81dffabfa4eb4"
   integrity sha512-a03ptS8lhhEENNgne6zQMXQWX/Z6WMEBGJQY0laOC0NgJywidePYpgkiE72fUAaj/r7t9a6XsdVyqx4UsEZijg==
@@ -5201,7 +5201,7 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react@^0.0.0-experimental-4ead6b530:
+react@0.0.0-experimental-4ead6b530:
   version "0.0.0-experimental-4ead6b530"
   resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-experimental-4ead6b530.tgz#88cdae012012a758dd039a63104758c6351115df"
   integrity sha512-tpbYm6FEuC1L6tCVXIKYAhgGAkS8DShzKpmXosowZvLqeByeLQQe77Ef6bi5HdEkFm2v0lZffLWckSM8R4TToA==
@@ -6296,10 +6296,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-dispose@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/use-dispose/-/use-dispose-0.2.1.tgz#de57d718faacb22fb8ef111ce21f6f9bd64b617b"
-  integrity sha512-YPCJPSUBSKCTDUJAh/dz1yp2BGj+2k02b7zlfzxeQEZfxGY3oLprofEIWCRx2F4ogomzXHOdWPovX/kRgguTQg==
+use-dispose@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/use-dispose/-/use-dispose-0.2.7.tgz#14ff3f44738f7505895fe2c613956811e13eda21"
+  integrity sha512-J5QJzZdQ69n5eZeZTAc0uJyjbHeuo5VANLsm10QbBYfQto3RM7ByjyvrHqtOIvXaN9n7hapqKtOWv3wR3vYx6w==
 
 use@^3.1.0:
   version "3.1.1"

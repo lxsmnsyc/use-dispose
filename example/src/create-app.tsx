@@ -1,4 +1,5 @@
 import React, { StrictMode, useEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 import DisposableObject from './disposable-object';
 import ObjectTracker from './object-tracker';
@@ -36,6 +37,8 @@ function useDelayedRender(): boolean {
   return state;
 }
 
+const { log } = console;
+
 export default function createApp(
   mode: RenderMode,
   batch: HookMode,
@@ -47,15 +50,13 @@ export default function createApp(
     const tracker = new ObjectTracker<DisposableObject>();
 
     const App = () => {
-      useMemoCustom(tracker, root, mode);
+      const obj = useMemoCustom(tracker, root, mode);
 
       const isValidating = useDelayedRender();
 
       if (isValidating) {
         return <span>{`${mode}: Loading...`}</span>;
       }
-
-      console.log(mode, batch, tracker);
 
       return (
         <span>{`${mode}: ${tracker.objects.length === 1 ? '👍' : '💀'}`}</span>
