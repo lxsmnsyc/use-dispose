@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -47,5 +47,19 @@
   "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "description": "React hook for automatic disposal on cancelled components",
+  "author": "Alexis Munsayac <alexis.munsayac@gmail.com>",
+  "private": false,
+  "repository": {
+    "url": "https://github.com/lxsmnsyc/use-dispose.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/lxsmnsyc/use-dispose",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/use-dispose/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
