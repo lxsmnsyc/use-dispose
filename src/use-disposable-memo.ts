@@ -45,7 +45,7 @@ function shouldUpdateDeps(a: DependencyList, b: DependencyList): boolean {
 export default function useDisposableMemo<T>(
   supplier: () => T,
   dispose?: (ref: T) => void,
-  dependencies = [],
+  dependencies: DependencyList = [],
 ): T {
   const value = useLazyRef(supplier);
   const deps = useRef<DependencyList>(dependencies);
