@@ -25,6 +25,16 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
-export * from './use-dispose';
-export { default as useDispose } from './use-dispose';
-export { default as useDisposableMemo } from './use-disposable-memo';
+import { MutableRefObject, useRef } from 'react';
+
+export default function useLazyRef<T>(supplier: () => T): MutableRefObject<T> {
+  const ref = useRef<MutableRefObject<T> | null>(null);
+
+  if (!ref.current) {
+    ref.current = {
+      current: supplier(),
+    };
+  }
+
+  return ref.current;
+}

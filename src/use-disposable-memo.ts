@@ -25,6 +25,52 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
-export * from './use-dispose';
-export { default as useDispose } from './use-dispose';
-export { default as useDisposableMemo } from './use-disposable-memo';
+import { DependencyList, useRef } from 'react';
+import useDispose from './use-dispose';
+import useIsomorphicEffect from './use-isomorphic-effect';
+import useLazyRef from './use-lazy-ref';
+
+function shouldUpdateDeps(a: DependencyList, b: DependencyList): boolean {
+  if (a.length !== b.length) {
+    return true;
+  }
+  for (let i = 0; i < a.length; i += 1) {
+    if (!Object.is(a[i], b[i])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export default function useDisposableMemo<T>(
+  supplier: () => T,
+  dispose?: (ref: T) => void,
+  dependencies = [],
+): T {
+  const value = useLazyRef(supplier);
+  const deps = useRef<DependencyList>(dependencies);
+
+  // Memoization process
+  if (shouldUpdateDeps(deps.current, dependencies)) {
+    if (dispose) {
+      dispose(value.current);
+    }
+    value.current = supplier();
+    deps.current = dependencies;
+  }
+
+  // Run dispose logic when component is cancelled.
+  useDispose(() => {
+    if (dispose) {
+      dispose(value.current);
+    }
+  });
+
+  useIsomorphicEffect(() => () => {
+    if (dispose) {
+      dispose(value.current);
+    }
+  }, []);
+
+  return value.current;
+}
