@@ -27,7 +27,7 @@
  */
 export type Schedule = NodeJS.Timeout;
 
-const SCHEDULE_DELAY = 64; // Approximately one frame.
+export const SCHEDULE_DELAY = 16; // Approximately one frame.
 
 export function scheduleCallback(callback: () => void): Schedule {
   return setTimeout(callback, SCHEDULE_DELAY);

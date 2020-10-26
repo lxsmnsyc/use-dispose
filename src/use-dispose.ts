@@ -25,15 +25,23 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
+import { useRef } from 'react';
 import { cancelSchedule, scheduleCallback } from './scheduler';
 import useIsomorphicEffect from './use-isomorphic-effect';
 
 export type Dispose = () => void;
 
 export default function useDispose(dispose: Dispose): void {
+  const commited = useRef(false);
+
   const schedule = scheduleCallback(dispose);
 
+  if (commited.current) {
+    cancelSchedule(schedule);
+  }
+
   useIsomorphicEffect(() => {
+    commited.current = true;
     cancelSchedule(schedule);
   }, [schedule]);
 }
