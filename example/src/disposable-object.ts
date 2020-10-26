@@ -24,9 +24,9 @@ export default class DisposableObject {
       log(title, this.id);
     };
 
-    container.addEventListener('mousedown', callback, false);
+    container.addEventListener('mouseover', callback, false);
     this.disposeLogic = () => {
-      container.removeEventListener('mousedown', callback, false);
+      container.removeEventListener('mouseover', callback, false);
     };
   }
 
