@@ -16,7 +16,7 @@ yarn add use-dispose
 
 In Strict mode and Concurrent mode, components may render twice before commit to catch and prevent render-time side-effects. However, since the side-effects scheduled for `useLayoutEffect` and `useEffect` are never called on the first render, there could be unintended leaks like double event registrations from external sources.
 
-`useDispose` attempts to solve this issue by running a registered cleanup for cancelled components, this helps clean and manage leaks that happened on the first render. `useDispose` only runs for cancelled components and not for components that runs their side-effects successfully.
+`useDispose` attempts to solve this issue by running a registered cleanup for cancelled components, this helps clean and manage leaks that happened on the render phases. `useDispose` only runs for cancelled components and not for components that runs their side-effects successfully.
 
 ```tsx
 import { useDispose } from 'use-dispose';
@@ -31,6 +31,13 @@ const [state] = useState(() => new DisposableObject());
 useDispose(() => {
   state.dispose();
 });
+
+// If you want to run disposal only on initial render phase
+// You may add "true" as a second argument which toggles
+// initial render only cleanup.
+useDispose(() => {
+  state.dispose();
+}, true);
 ```
 
 There's also the `useDisposableMemo` where the produced object from the memoization process which automatically gets disposed when a new object is produced, the component is cancelled or when the component unmounts:
