@@ -31,12 +31,12 @@ import useIsomorphicEffect from './use-isomorphic-effect';
 
 export type Dispose = () => void;
 
-export default function useDispose(dispose: Dispose): void {
+export default function useDispose(dispose: Dispose, initialRender = false): void {
   const commited = useRef(false);
 
   const schedule = scheduleCallback(dispose);
 
-  if (commited.current) {
+  if (initialRender && commited.current) {
     cancelSchedule(schedule);
   }
 

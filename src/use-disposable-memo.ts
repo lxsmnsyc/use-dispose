@@ -65,7 +65,7 @@ export default function useDisposableMemo<T>(
     if (dispose) {
       dispose(currentValue);
     }
-  });
+  }, true);
 
   useIsomorphicEffect(() => () => {
     if (dispose) {
