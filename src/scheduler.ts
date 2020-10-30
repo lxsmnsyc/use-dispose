@@ -25,7 +25,7 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
-export type Schedule = NodeJS.Timeout;
+export type Schedule = number;
 
 let SCHEDULE_DELAY = 5000;
 
