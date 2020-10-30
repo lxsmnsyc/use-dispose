@@ -1,9 +1,13 @@
 import React, { StrictMode, useEffect, useState } from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { useDisposableMemo, useDispose } from '../src';
+import { getDisposeTimeout, useDisposableMemo, useDispose } from '../src';
 
 jest.useFakeTimers();
+
+function advanceTimers() {
+  jest.advanceTimersByTime(getDisposeTimeout());
+}
 
 describe('useDispose', () => {
   it('should run on component cancellation on StrictMode', () => {
@@ -22,7 +26,7 @@ describe('useDispose', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposed).toBe(true);
   });
@@ -42,7 +46,7 @@ describe('useDispose', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposed).toBe(true);
   });
@@ -67,7 +71,7 @@ describe('useDispose', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposedCount).toBe(2);
   });
@@ -93,7 +97,7 @@ describe('useDisposableMemo', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposed).toBe(true);
   });
@@ -121,7 +125,7 @@ describe('useDisposableMemo', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposedCount).toBe(1);
   });
@@ -156,7 +160,7 @@ describe('useDisposableMemo', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposedCount).toBe(2);
   });
@@ -185,7 +189,7 @@ describe('useDisposableMemo', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposedCount).toBe(2);
   });
@@ -213,7 +217,7 @@ describe('useDisposableMemo', () => {
       </StrictMode>
     ));
 
-    jest.advanceTimersByTime(16);
+    advanceTimers();
 
     expect(disposedCount).toBe(1);
   });

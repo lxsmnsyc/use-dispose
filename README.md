@@ -54,6 +54,10 @@ const disposableObject = useDisposableMemo(
 );
 ```
 
+### Dispose timeouts
+
+`useDispose` and `useDisposableMemo` schedules the dispose callback 5 seconds after the render method is run. You may change this through `setDisposeTimeout`.
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)

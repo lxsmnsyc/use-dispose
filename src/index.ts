@@ -28,3 +28,4 @@
 export * from './use-dispose';
 export { default as useDispose } from './use-dispose';
 export { default as useDisposableMemo } from './use-disposable-memo';
+export { getDisposeTimeout, setDisposeTimeout } from './scheduler';

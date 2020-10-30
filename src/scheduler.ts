@@ -27,7 +27,15 @@
  */
 export type Schedule = NodeJS.Timeout;
 
-export const SCHEDULE_DELAY = 16; // Approximately one frame.
+let SCHEDULE_DELAY = 5000;
+
+export function setDisposeTimeout(value: number): void {
+  SCHEDULE_DELAY = value;
+}
+
+export function getDisposeTimeout(): number {
+  return SCHEDULE_DELAY;
+}
 
 export function scheduleCallback(callback: () => void): Schedule {
   return setTimeout(callback, SCHEDULE_DELAY);
