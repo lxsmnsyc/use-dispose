@@ -25,7 +25,7 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
-export type Schedule = number;
+export type Schedule = NodeJS.Timeout | number;
 
 let SCHEDULE_DELAY = 5000;
 
@@ -38,9 +38,15 @@ export function getDisposeTimeout(): number {
 }
 
 export function scheduleCallback(callback: () => void): Schedule {
-  return setTimeout(callback, SCHEDULE_DELAY);
+  if (typeof window === 'undefined') {
+    return setTimeout(callback, SCHEDULE_DELAY);
+  }
+  return window.setTimeout(callback, SCHEDULE_DELAY);
 }
 
 export function cancelSchedule(schedule: Schedule): void {
-  return clearTimeout(schedule);
+  if (typeof schedule === 'object') {
+    return clearTimeout(schedule);
+  }
+  return window.clearTimeout(schedule);
 }

@@ -25,9 +25,8 @@
  * @author Alexis Munsayac <alexis.munsayac@gmail.com>
  * @copyright Alexis Munsayac 2020
  */
-import { DependencyList, useRef } from 'react';
+import { DependencyList, useEffect, useRef } from 'react';
 import useDispose from './use-dispose';
-import useIsomorphicEffect from './use-isomorphic-effect';
 import useLazyRef from './use-lazy-ref';
 
 function shouldUpdateDeps(a: DependencyList, b: DependencyList): boolean {
@@ -67,10 +66,11 @@ export default function useDisposableMemo<T>(
     }
   }, true);
 
-  useIsomorphicEffect(() => () => {
+  useEffect(() => () => {
     if (dispose) {
       dispose(value.current);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return value.current;
