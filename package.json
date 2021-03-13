@@ -1,5 +1,5 @@
 {
-  "version": "0.4.3",
+  "version": "0.4.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -28,10 +28,8 @@
   "name": "use-dispose",
   "module": "dist/use-dispose.esm.js",
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "imports": "./dist/use-dispose.esm.js"
-    }
+    "require": "./dist/index.js",
+    "imports": "./dist/use-dispose.esm.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
