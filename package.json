@@ -1,5 +1,5 @@
 {
-  "version": "0.4.4",
+  "version": "0.4.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,7 +10,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "prepublish": "pridepack build",
+    "prepublish": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
     "lint": "pridepack lint",
