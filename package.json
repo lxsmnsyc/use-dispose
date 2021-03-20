@@ -1,7 +1,12 @@
 {
-  "version": "0.4.6",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.5.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -26,11 +31,6 @@
     "react-hooks"
   ],
   "name": "use-dispose",
-  "module": "dist/use-dispose.esm.js",
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/use-dispose.esm.js"
-  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -41,7 +41,7 @@
     "eslint": "^7.22.0",
     "eslint-config-lxsmnsyc": "^0.1.20",
     "jest": "^26.6.3",
-    "pridepack": "^0.7.1",
+    "pridepack": "^0.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-test-renderer": "^17.0.1",
